@@ -2,38 +2,18 @@
    PAULINA & YALFRED — WEDDING INVITATION
    ═══════════════════════════════════════════════ */
 
-/* ─── VARIABLES ─── */
 :root {
-  --celeste-50: #E3F2FD;
-  --celeste-100: #BBDEFB;
-  --celeste-200: #90CAF9;
-  --celeste-300: #64B5F6;
-  --blue-400: #42A5F5;
-  --blue-500: #2196F3;
-  --blue-600: #1E88E5;
-  --blue-700: #1976D2;
-  --blue-800: #1565C0;
-  --blue-900: #0D47A1;
-
   --gold: #D4AF37;
   --gold-light: #F0D060;
   --gold-dark: #B8962A;
-
-  --white: #FFFFFF;
-  --light: #F8FAFE;
   --dark: #0A1929;
   --text: #1A2A3A;
   --text-light: #546e7a;
-
   --ff-display: 'Playfair Display', Georgia, serif;
   --ff-body: 'Montserrat', 'Segoe UI', sans-serif;
-
   --radius: 12px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
 }
 
-/* ─── RESET ─── */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -47,7 +27,7 @@ html {
 
 body {
   font-family: var(--ff-body);
-  background: linear-gradient(175deg, #E3F2FD 0%, #BBDEFB 30%, #E8EAF6 60%, #F3E5F5 100%);
+  background: linear-gradient(170deg, #D6EAF8 0%, #AED6F1 25%, #D4E6F1 50%, #E8DAEF 80%, #F5EEF8 100%);
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
@@ -64,12 +44,57 @@ a {
   color: inherit;
 }
 
-/* ─── AMPERSAND ─── */
 .amp {
   font-family: var(--ff-display);
   font-style: italic;
   color: var(--gold);
   font-weight: 900;
+}
+
+/* ─── ═══════════════════════════════════════════
+     FLORES LATERALES (azul celeste)
+     ═══════════════════════════════════════════ */
+
+.flores-l,
+.flores-r {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: clamp(160px, 14vw, 260px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.flores-l {
+  left: 0;
+  background: url('flores-azul.png') left center / auto 100% no-repeat;
+}
+
+.flores-r {
+  right: 0;
+  background: url('flores-azul.png') right center / auto 100% no-repeat;
+  transform: scaleX(-1);
+}
+
+.env-flores-l,
+.env-flores-r {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: clamp(160px, 14vw, 260px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.env-flores-l {
+  left: 0;
+  background: url('flores-azul.png') left center / auto 100% no-repeat;
+}
+
+.env-flores-r {
+  right: 0;
+  background: url('flores-azul.png') right center / auto 100% no-repeat;
+  transform: scaleX(-1);
 }
 
 /* ─── ═══════════════════════════════════════════
@@ -80,7 +105,7 @@ a {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: linear-gradient(175deg, #E3F2FD 0%, #BBDEFB 30%, #E8EAF6 60%, #F3E5F5 100%);
+  background: linear-gradient(170deg, #D6EAF8 0%, #AED6F1 25%, #D4E6F1 50%, #E8DAEF 80%, #F5EEF8 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -92,26 +117,6 @@ a {
   opacity: 0;
   transform: scale(1.05);
   pointer-events: none;
-}
-
-/* ─── Floral frame for envelope ─── */
-.env-floral-frame {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.env-floral-frame .deco-img-c {
-  width: clamp(80px, 10vw, 140px);
-  height: clamp(80px, 10vw, 140px);
-}
-
-.env-floral-frame .deco-img-s {
-  top: 0;
-  bottom: 0;
-  width: clamp(60px, 6vw, 100px);
-  opacity: 0.06;
 }
 
 .env-hint-mobile {
@@ -198,7 +203,6 @@ a {
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 12px rgba(212, 175, 55, 0.4);
-  transition: transform 0.4s ease;
 }
 
 .env-seal i {
@@ -301,9 +305,8 @@ a {
 .env-inside {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -346,73 +349,16 @@ a {
   font-style: italic;
 }
 
-@media (max-width: 480px) {
-  .env-hint-mobile { display: block; }
-  .env-container { width: 280px; height: 210px; }
-  .env-names { font-size: 1.2rem; }
-  .env-body { padding: 16px; }
-}
-
 /* ─── ═══════════════════════════════════════════
      MAIN LAYOUT
      ═══════════════════════════════════════════ */
 
 #main-content {
   position: relative;
-  min-height: 100vh;
-  padding: 40px 24px;
-}
-
-/* ─── FLORAL FRAME (single global instance) ─── */
-.floral-frame {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.deco-img {
-  position: absolute;
-  background: url('imagenfondo.png') no-repeat;
-  pointer-events: none;
-}
-
-.deco-img-c {
-  width: clamp(80px, 10vw, 140px);
-  height: clamp(80px, 10vw, 140px);
-}
-
-.deco-img-c--tl { top: 0; left: 0; background-position: 0% 0%; background-size: 200% 200%; }
-.deco-img-c--tr { top: 0; right: 0; background-position: 100% 0%; background-size: 200% 200%; }
-.deco-img-c--bl { bottom: 0; left: 0; background-position: 0% 100%; background-size: 200% 200%; }
-.deco-img-c--br { bottom: 0; right: 0; background-position: 100% 100%; background-size: 200% 200%; }
-
-.deco-img-s {
-  top: 0;
-  bottom: 0;
-  width: clamp(60px, 6vw, 100px);
-  opacity: 0.06;
-}
-
-.deco-img-s--l { left: 0; background-position: 0% 50%; background-size: 180% 100%; }
-.deco-img-s--r { right: 0; background-position: 100% 50%; background-size: 180% 100%; }
-
-/* ─── CONTENT CARD (glassmorphism) ─── */
-.content-card {
-  position: relative;
   z-index: 1;
-  max-width: 1100px;
+  max-width: 960px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(212, 175, 55, 0.25);
-  border-radius: var(--radius-xl);
-  padding: 60px 64px;
-  box-shadow:
-    0 30px 80px rgba(13, 71, 161, 0.12),
-    0 8px 32px rgba(0, 0, 0, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  padding: 40px 24px;
 }
 
 /* ─── ═══════════════════════════════════════════
@@ -421,9 +367,8 @@ a {
 
 #hero {
   text-align: center;
-  padding: 20px 0 32px;
+  padding: 60px 0 32px;
   position: relative;
-  overflow: hidden;
 }
 
 .hero-particles {
@@ -472,7 +417,8 @@ a {
   border: 1px solid rgba(212, 175, 55, 0.3);
   border-radius: 30px;
   margin-bottom: 24px;
-  background: rgba(212, 175, 55, 0.06);
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(4px);
 }
 
 .hero-title {
@@ -483,13 +429,14 @@ a {
   line-height: 1.15;
   margin-bottom: 16px;
   letter-spacing: -0.5px;
+  text-shadow: 0 2px 12px rgba(255,255,255,0.5);
 }
 
 .hero-sub {
   font-family: var(--ff-body);
   font-size: clamp(0.9rem, 1.3vw, 1.1rem);
-  color: var(--text-light);
-  font-weight: 300;
+  color: #37474F;
+  font-weight: 400;
   letter-spacing: 0.5px;
   max-width: 500px;
   margin: 0 auto 32px;
@@ -554,7 +501,7 @@ a {
   font-family: var(--ff-body);
   font-size: 0.7rem;
   letter-spacing: 5px;
-  color: var(--blue-400);
+  color: #5C6BC0;
   text-transform: uppercase;
   display: block;
   margin-bottom: 8px;
@@ -571,11 +518,11 @@ a {
 .section-desc {
   font-family: var(--ff-body);
   font-size: 0.9rem;
-  color: var(--text-light);
+  color: #37474F;
   max-width: 480px;
   margin: 12px auto 0;
   line-height: 1.6;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 /* ─── ═══════════════════════════════════════════
@@ -584,15 +531,13 @@ a {
 
 .video-wrapper {
   position: relative;
-  max-width: 800px;
+  max-width: 700px;
   margin: 0 auto;
   border: 2px solid var(--gold);
   border-radius: var(--radius);
   padding: 5px;
-  background: var(--blue-900);
-  box-shadow:
-    0 12px 48px rgba(13, 71, 161, 0.15),
-    inset 0 0 24px rgba(212, 175, 55, 0.04);
+  background: rgba(13,71,161,0.06);
+  box-shadow: 0 8px 30px rgba(13,71,161,0.12);
   overflow: hidden;
 }
 
@@ -634,7 +579,7 @@ a {
 
 #video1,
 #video2 {
-  max-width: 800px;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -651,7 +596,7 @@ a {
   font-family: var(--ff-display);
   font-size: 1rem;
   font-style: italic;
-  color: var(--text-light);
+  color: #37474F;
   margin-bottom: 8px;
 }
 
@@ -667,14 +612,14 @@ a {
 .invitacion-message {
   font-family: var(--ff-body);
   font-size: 0.95rem;
-  color: var(--text-light);
+  color: #37474F;
   max-width: 520px;
   margin: 0 auto 32px;
   line-height: 1.7;
 }
 
 .invitacion-message strong {
-  color: var(--blue-800);
+  color: #1A237E;
   font-weight: 600;
 }
 
@@ -720,7 +665,8 @@ a {
 .timeline-dot {
   width: 44px;
   height: 44px;
-  background: var(--white);
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(4px);
   border: 2px solid var(--gold);
   border-radius: 50%;
   display: flex;
@@ -742,13 +688,13 @@ a {
 
 .timeline-card p {
   font-size: 0.88rem;
-  color: var(--text-light);
+  color: #37474F;
   line-height: 1.5;
 }
 
 .timeline-date {
   font-weight: 500;
-  color: var(--blue-700) !important;
+  color: #1A237E !important;
 }
 
 .timeline-loc {
@@ -772,15 +718,15 @@ a {
 }
 
 .btn-maps {
-  background: rgba(13, 71, 161, 0.06);
-  color: var(--blue-700);
+  background: rgba(13, 71, 161, 0.08);
+  color: #1A237E;
   border: 1px solid rgba(13, 71, 161, 0.2);
 }
 
 .btn-maps:hover {
-  background: var(--blue-900);
+  background: #1A237E;
   color: var(--white);
-  border-color: var(--blue-900);
+  border-color: #1A237E;
 }
 
 .btn-whatsapp {
@@ -821,7 +767,7 @@ a {
 
 .rsvp-sub {
   font-size: 0.85rem;
-  color: var(--text-light);
+  color: #37474F;
   margin-bottom: 20px;
 }
 
@@ -831,11 +777,7 @@ a {
 
 footer {
   text-align: center;
-  padding: 40px 24px 24px;
-  position: relative;
-  z-index: 1;
-  max-width: 1100px;
-  margin: 0 auto;
+  padding: 40px 0 24px;
 }
 
 .footer-content {
@@ -854,6 +796,8 @@ footer {
   align-items: center;
   justify-content: center;
   margin-bottom: 4px;
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(4px);
 }
 
 .footer-ornament i {
@@ -871,13 +815,13 @@ footer {
 .footer-date {
   font-family: var(--ff-display);
   font-size: 0.9rem;
-  color: var(--text-light);
+  color: #37474F;
 }
 
 .footer-msg {
   font-size: 0.82rem;
-  color: var(--text-light);
-  font-weight: 300;
+  color: #37474F;
+  font-weight: 400;
   letter-spacing: 0.5px;
 }
 
@@ -913,53 +857,28 @@ footer {
      ═══════════════════════════════════════════ */
 
 @media (max-width: 1024px) {
-  #main-content {
-    padding: 24px 16px;
-  }
-
-  .content-card {
-    padding: 40px 32px;
-    border-radius: var(--radius-lg);
-  }
-
-  .deco-img-c {
-    width: clamp(60px, 8vw, 100px);
-    height: clamp(60px, 8vw, 100px);
-  }
-
-  .deco-img-s {
-    width: clamp(40px, 4vw, 70px);
+  .flores-l,
+  .flores-r,
+  .env-flores-l,
+  .env-flores-r {
+    width: clamp(120px, 12vw, 200px);
   }
 }
 
 @media (max-width: 768px) {
   #main-content {
-    padding: 24px 28px;
+    padding: 24px 20px;
   }
 
-  .content-card {
-    padding: 32px 24px;
-    border-radius: var(--radius-lg);
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    box-shadow:
-      0 20px 60px rgba(13, 71, 161, 0.15),
-      0 4px 20px rgba(0, 0, 0, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  #hero {
+    padding: 40px 0 24px;
   }
 
-  .floral-frame .deco-img-c {
-    width: 80px;
-    height: 80px;
-  }
-  .floral-frame .deco-img-s {
-    width: 50px;
-    opacity: 0.08;
-  }
-
-  .section-divider {
-    margin: 36px auto;
+  .flores-l,
+  .flores-r,
+  .env-flores-l,
+  .env-flores-r {
+    width: clamp(90px, 10vw, 140px);
   }
 
   .video-wrapper video {
@@ -979,36 +898,26 @@ footer {
     width: 36px;
     height: 36px;
   }
-
-  footer {
-    padding: 32px 24px 20px;
-  }
 }
 
 @media (max-width: 480px) {
   #main-content {
-    padding: 16px 20px;
+    padding: 16px 14px;
   }
 
-  .content-card {
-    padding: 24px 16px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    box-shadow:
-      0 16px 48px rgba(13, 71, 161, 0.18),
-      0 4px 16px rgba(0, 0, 0, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  #hero {
+    padding: 32px 0 20px;
   }
 
-  .floral-frame .deco-img-c {
-    width: 65px;
-    height: 65px;
+  .hero-title {
+    font-size: 1.8rem;
   }
-  .floral-frame .deco-img-s {
-    width: 40px;
-    opacity: 0.06;
+
+  .flores-l,
+  .flores-r,
+  .env-flores-l,
+  .env-flores-r {
+    width: clamp(70px, 8vw, 100px);
   }
 
   .video-wrapper {
@@ -1027,9 +936,5 @@ footer {
   .timeline-dot {
     width: 32px;
     height: 32px;
-  }
-
-  .hero-title {
-    font-size: 1.8rem;
   }
 }
