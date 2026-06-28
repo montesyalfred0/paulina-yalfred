@@ -91,6 +91,120 @@
       z-index: 0;
     }
 
+    /* ── Global Texture (papel de lujo) ── */
+    .global-texture {
+      position: fixed;
+      inset: 0;
+      background: url('texturizado.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: 0;
+      mix-blend-mode: multiply;
+      animation: floatTexture 35s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    @supports (mix-blend-mode: soft-light) {
+      .global-texture {
+        mix-blend-mode: soft-light;
+        opacity: 0.35;
+      }
+    }
+
+    /* ── Texture Corner Decorations ── */
+    .texture-corner {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+      background: url('texturizado.png');
+      background-size: 250% auto;
+      background-repeat: no-repeat;
+      opacity: 0.2;
+      animation: floatTexture 40s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .texture-corner.tl {
+      top: -30px;
+      left: -30px;
+      width: min(280px, 40vw);
+      height: min(280px, 40vw);
+      background-position: top left;
+    }
+
+    .texture-corner.tr {
+      top: -30px;
+      right: -30px;
+      width: min(280px, 40vw);
+      height: min(280px, 40vw);
+      background-position: top right;
+    }
+
+    .texture-corner.bl {
+      bottom: -30px;
+      left: -30px;
+      width: min(280px, 40vw);
+      height: min(280px, 40vw);
+      background-position: bottom left;
+    }
+
+    .texture-corner.br {
+      bottom: -30px;
+      right: -30px;
+      width: min(280px, 40vw);
+      height: min(280px, 40vw);
+      background-position: bottom right;
+    }
+
+    .texture-corner.soft-tl {
+      top: -20px;
+      left: -20px;
+      width: min(200px, 30vw);
+      height: min(200px, 30vw);
+      background-position: top left;
+      background-size: 300% auto;
+      opacity: 0.15;
+    }
+
+    .texture-corner.soft-tr {
+      top: -20px;
+      right: -20px;
+      width: min(200px, 30vw);
+      height: min(200px, 30vw);
+      background-position: top right;
+      background-size: 300% auto;
+      opacity: 0.15;
+    }
+
+    .texture-corner.soft-bl {
+      bottom: -20px;
+      left: -20px;
+      width: min(200px, 30vw);
+      height: min(200px, 30vw);
+      background-position: bottom left;
+      background-size: 300% auto;
+      opacity: 0.15;
+    }
+
+    .texture-corner.soft-br {
+      bottom: -20px;
+      right: -20px;
+      width: min(200px, 30vw);
+      height: min(200px, 30vw);
+      background-position: bottom right;
+      background-size: 300% auto;
+      opacity: 0.15;
+    }
+
+    @keyframes floatTexture {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
     /* ── Gold Particles ── */
     #gold-particles {
       position: fixed;
@@ -1000,6 +1114,9 @@
   </style>
 </head>
 <body>
+  <!-- ── Global Texture Fondo Papel de Lujo ── -->
+  <div class="global-texture"></div>
+
   <!-- ── Gold Particles ── -->
   <div id="gold-particles"></div>
 
@@ -1007,6 +1124,8 @@
        HERO
        ═══════════════════════════════════════════ ── -->
   <section id="hero" class="watercolor">
+    <div class="texture-corner tl"></div>
+    <div class="texture-corner br"></div>
     <div class="watercolor-bg">
       <div class="ink-splatter" style="width:400px;height:250px;background:radial-gradient(circle,rgba(212,176,106,0.08),transparent);top:5%;left:-10%;"></div>
       <div class="ink-splatter" style="width:300px;height:400px;background:radial-gradient(circle,rgba(191,212,230,0.15),transparent);bottom:0;right:-5%;"></div>
@@ -1038,6 +1157,7 @@
        NUESTRA HISTORIA
        ═══════════════════════════════════════════ ── -->
   <section id="story" class="watercolor-reverse">
+    <div class="texture-corner tr"></div>
     <div class="ink-splatter" style="width:350px;height:350px;background:radial-gradient(circle,rgba(212,176,106,0.06),transparent);top:10%;right:-10%;"></div>
     <div class="ink-splatter" style="width:250px;height:200px;background:radial-gradient(circle,rgba(191,212,230,0.12),transparent);bottom:5%;left:-8%;"></div>
     <div class="section-inner">
@@ -1061,6 +1181,7 @@
        COMPROMISO
        ═══════════════════════════════════════════ ── -->
   <section id="compromiso" class="watercolor">
+    <div class="texture-corner bl"></div>
     <div class="ink-splatter" style="width:300px;height:300px;background:radial-gradient(circle,rgba(14,42,71,0.04),transparent);top:15%;left:-5%;"></div>
     <div class="ink-splatter" style="width:250px;height:350px;background:radial-gradient(circle,rgba(212,176,106,0.07),transparent);bottom:10%;right:-10%;"></div>
     <div class="section-inner">
@@ -1084,6 +1205,8 @@
        CEREMONIA Y RECEPCIÓN
        ═══════════════════════════════════════════ ── -->
   <section id="ceremony" class="watercolor-reverse">
+    <div class="texture-corner soft-br"></div>
+    <div class="texture-corner soft-tl"></div>
     <div class="ink-splatter" style="width:400px;height:300px;background:radial-gradient(circle,rgba(212,176,106,0.06),transparent);top:5%;right:-15%;"></div>
     <div class="ink-splatter" style="width:350px;height:250px;background:radial-gradient(circle,rgba(191,212,230,0.1),transparent);bottom:10%;left:-10%;"></div>
     <div class="section-inner">
@@ -1142,6 +1265,7 @@
        CUENTA REGRESIVA
        ═══════════════════════════════════════════ ── -->
   <section id="countdown" class="watercolor">
+    <div class="texture-corner soft-tr"></div>
     <div class="ink-splatter" style="width:300px;height:300px;background:radial-gradient(circle,rgba(212,176,106,0.06),transparent);top:10%;left:-5%;"></div>
     <div class="ink-splatter" style="width:250px;height:400px;background:radial-gradient(circle,rgba(191,212,230,0.1),transparent);bottom:0;right:-5%;"></div>
     <div class="ink-splatter" style="width:180px;height:180px;background:radial-gradient(circle,rgba(14,42,71,0.03),transparent);top:30%;right:20%;"></div>
@@ -1176,6 +1300,7 @@
        GALERÍA
        ═══════════════════════════════════════════ ── -->
   <section id="gallery" class="watercolor-reverse">
+    <div class="texture-corner soft-bl"></div>
     <div class="ink-splatter" style="width:350px;height:250px;background:radial-gradient(circle,rgba(212,176,106,0.05),transparent);top:5%;left:-8%;"></div>
     <div class="ink-splatter" style="width:250px;height:300px;background:radial-gradient(circle,rgba(191,212,230,0.08),transparent);bottom:5%;right:-5%;"></div>
     <div class="section-inner">
@@ -1206,6 +1331,8 @@
        CONFIRMAR ASISTENCIA
        ═══════════════════════════════════════════ ── -->
   <section id="rsvp" class="watercolor">
+    <div class="texture-corner soft-tl"></div>
+    <div class="texture-corner soft-br"></div>
     <div class="ink-splatter" style="width:300px;height:350px;background:radial-gradient(circle,rgba(212,176,106,0.06),transparent);top:5%;right:-10%;"></div>
     <div class="ink-splatter" style="width:250px;height:200px;background:radial-gradient(circle,rgba(191,212,230,0.1),transparent);bottom:10%;left:-5%;"></div>
     <div class="section-inner">
@@ -1219,14 +1346,7 @@
             <label for="name">Nombre completo</label>
             <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
           </div>
-          <div class="form-group">
-            <label for="guests">Número de invitados</label>
-            <input type="number" id="guests" name="guests" min="1" max="10" placeholder="¿Cuántos asistirán?">
-          </div>
-          <div class="form-group">
-            <label for="phone">Teléfono</label>
-            <input type="tel" id="phone" name="phone" placeholder="Tu número de teléfono">
-          </div>
+
           <div class="form-group">
             <label for="message">Mensaje opcional</label>
             <textarea id="message" name="message" placeholder="Déjanos un mensaje especial..."></textarea>
@@ -1336,6 +1456,20 @@
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        let text = `¡Felicidades Paulina & Yalfred! 🎉👰🤵💍\n\n`;
+        text += `${name} confirma su asistencia a su gran día. 💐✨`;
+
+        if (message) {
+          text += `\n\nMensaje: ${message}`;
+        }
+
+        const encoded = encodeURIComponent(text);
+        window.open(`https://wa.me/50589091050?text=${encoded}`, '_blank');
+
         form.style.display = 'none';
         success.classList.add('show');
       });

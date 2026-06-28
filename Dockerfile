@@ -4,6 +4,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 COPY index.html /usr/share/nginx/html/index.html
 COPY imagen.jpeg /usr/share/nginx/html/imagen.jpeg
+COPY texturizado.png /usr/share/nginx/html/texturizado.png
 COPY video1.mp4 /usr/share/nginx/html/video1.mp4
 COPY video2.mp4 /usr/share/nginx/html/video2.mp4
 
