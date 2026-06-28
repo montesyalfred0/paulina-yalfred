@@ -1,7 +1,0 @@
-services:
-  wedding:
-    build: .
-    container_name: paulina-yalfred-boda
-    ports:
-      - "8080:80"
-    restart: unless-stopped
