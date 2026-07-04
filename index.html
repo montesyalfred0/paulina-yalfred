@@ -793,76 +793,6 @@
     }
 
     /* ── ═══════════════════════════════════════════
-           GALLERY
-           ═══════════════════════════════════════════ ── */
-    #gallery {
-      background: linear-gradient(0deg, var(--blue-smoke) 0%, var(--blue-light) 100%);
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .gallery-item {
-      position: relative;
-      aspect-ratio: 1;
-      background: rgba(255, 255, 255, 0.5);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      box-shadow:
-        0 4px 20px rgba(14, 42, 71, 0.06),
-        inset 0 0 0 1px rgba(212, 176, 106, 0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      transition: var(--transition);
-      cursor: pointer;
-      overflow: hidden;
-    }
-
-    .gallery-item::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 40%;
-      background: linear-gradient(transparent, rgba(255, 255, 255, 0.3));
-      pointer-events: none;
-    }
-
-    .gallery-item:hover {
-      transform: translateY(-5px) rotate(-1deg);
-      box-shadow:
-        0 12px 40px rgba(14, 42, 71, 0.1),
-        0 0 0 2px rgba(212, 176, 106, 0.15);
-    }
-
-    .gallery-item .icon {
-      font-size: 2.5rem;
-      opacity: 0.2;
-      margin-bottom: 10px;
-      color: var(--blue-deep);
-    }
-
-    .gallery-item .placeholder-text {
-      font-family: var(--font-titles);
-      font-size: 0.85rem;
-      font-style: italic;
-      color: var(--blue-deep);
-      opacity: 0.3;
-      text-align: center;
-    }
-
-    /* ── ═══════════════════════════════════════════
            RSVP FORM
            ═══════════════════════════════════════════ ── */
     #rsvp {
@@ -975,6 +905,312 @@
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RSVP SEARCH ── */
+    .rsvp-search-container {
+      max-width: 550px;
+      margin: 0 auto;
+    }
+
+    .search-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 25px rgba(14, 42, 71, 0.06);
+      transition: var(--transition);
+    }
+
+    .search-wrapper:focus-within {
+      box-shadow: 0 0 0 3px rgba(212, 176, 106, 0.1), 0 8px 30px rgba(14, 42, 71, 0.08);
+      border-color: var(--gold);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 18px;
+      font-size: 1.1rem;
+      opacity: 0.45;
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    #search-family {
+      width: 100%;
+      padding: 16px 18px 16px 48px;
+      background: transparent;
+      border: none;
+      border-radius: 14px;
+      font-family: var(--font-text);
+      font-size: 0.95rem;
+      color: var(--blue-deep);
+      outline: none;
+    }
+
+    #search-family::placeholder {
+      color: var(--blue-deep);
+      opacity: 0.3;
+      font-style: italic;
+    }
+
+    .search-results {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .search-results:empty {
+      display: none;
+    }
+
+    /* ── Family Card ── */
+    .family-card {
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 30px rgba(14, 42, 71, 0.06);
+      padding: 22px 24px;
+      transition: var(--transition);
+      animation: cardIn 0.4s ease both;
+    }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .family-card:hover {
+      box-shadow: 0 8px 40px rgba(14, 42, 71, 0.1);
+      border-color: rgba(212, 176, 106, 0.2);
+    }
+
+    .family-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(212, 176, 106, 0.12);
+      gap: 12px;
+    }
+
+    .family-card-title {
+      font-family: var(--font-titles);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--blue-deep);
+      letter-spacing: 0.5px;
+    }
+
+    .family-card-tickets {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: var(--font-titles);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold);
+      background: rgba(212, 176, 106, 0.1);
+      padding: 4px 11px;
+      border-radius: 20px;
+      border: 1px solid rgba(212, 176, 106, 0.2);
+      white-space: nowrap;
+      letter-spacing: 0.5px;
+    }
+
+    .family-card-tickets .ticket-icon {
+      font-size: 0.8rem;
+    }
+
+    /* ── Member Checkboxes ── */
+    .family-card-members {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin: 4px 0 18px;
+    }
+
+    .member-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+
+    .member-item:hover {
+      background: rgba(212, 176, 106, 0.07);
+    }
+
+    .member-item input[type="checkbox"] {
+      display: none;
+    }
+
+    .member-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid rgba(212, 176, 106, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: var(--transition);
+      position: relative;
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .member-item input:checked + .member-check {
+      background: var(--gold);
+      border-color: var(--gold);
+      box-shadow: 0 0 12px rgba(212, 176, 106, 0.3);
+    }
+
+    .member-check::after {
+      content: '✓';
+      font-size: 0.6rem;
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .member-item input:checked + .member-check::after {
+      opacity: 1;
+    }
+
+    .member-name {
+      font-family: var(--font-text);
+      font-size: 0.93rem;
+      color: var(--blue-deep);
+      font-weight: 400;
+      transition: var(--transition);
+    }
+
+    .member-item input:checked ~ .member-name {
+      font-weight: 600;
+      color: var(--blue-deep);
+    }
+
+    .member-highlight {
+      background: rgba(212, 176, 106, 0.08);
+      border-radius: 10px;
+    }
+
+    .member-highlight .member-check {
+      border-color: var(--gold);
+    }
+
+    /* ── Confirm Button ── */
+    .family-card-actions {
+      text-align: center;
+    }
+
+    .family-card-actions .btn-gold {
+      width: 100%;
+      justify-content: center;
+      padding: 13px 36px;
+      font-size: 0.82rem;
+    }
+
+    .family-card-actions .btn-gold:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    .family-card-actions .btn-gold:disabled::before {
+      opacity: 0;
+    }
+
+    /* ── Confirmed State ── */
+    .family-card.confirmed {
+      background: rgba(212, 176, 106, 0.07);
+      border-color: rgba(212, 176, 106, 0.25);
+      pointer-events: none;
+      opacity: 0.85;
+    }
+
+    .family-card.confirmed .family-card-title span::after {
+      content: ' ✔';
+      color: var(--gold);
+      font-size: 0.85em;
+    }
+
+    .family-card.confirmed .member-check {
+      background: var(--gold);
+      border-color: var(--gold);
+      box-shadow: 0 0 8px rgba(212, 176, 106, 0.2);
+    }
+
+    .family-card.confirmed .member-check::after {
+      opacity: 1;
+    }
+
+    .family-card.confirmed .btn-gold {
+      opacity: 0.6;
+      border-color: var(--gold);
+      color: var(--gold);
+      cursor: default;
+      transform: none !important;
+      box-shadow: none !important;
+      pointer-events: none;
+    }
+
+    .family-card.confirmed .btn-gold::before {
+      opacity: 0;
+    }
+
+    /* ── Empty State ── */
+    .rsvp-empty {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .rsvp-empty .empty-icon {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 16px;
+      opacity: 0.6;
+    }
+
+    .rsvp-empty p {
+      font-family: var(--font-text);
+      font-style: italic;
+      color: var(--blue-deep);
+      font-size: 0.9rem;
+      opacity: 0.5;
+    }
+
+    .rsvp-empty.hidden {
+      display: none;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 40px 20px;
+      font-family: var(--font-text);
+      font-style: italic;
+      color: var(--blue-deep);
+      opacity: 0.4;
+      font-size: 0.9rem;
+    }
+
+    .no-results.hidden {
+      display: none;
     }
 
     /* ── ═══════════════════════════════════════════
@@ -1094,11 +1330,6 @@
       .countdown-number {
         padding: 10px 12px;
         font-size: clamp(1.8rem, 8vw, 2.5rem);
-      }
-
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
       }
 
       .video-card {
@@ -1313,30 +1544,23 @@
     <div class="ink-splatter" style="width:250px;height:200px;background:radial-gradient(circle,rgba(191,212,230,0.1),transparent);bottom:10%;left:-5%;"></div>
     <div class="section-inner">
       <h2 class="section-title reveal">Confirma tu Asistencia</h2>
-      <p class="section-subtitle reveal">Tu presencia hará este día aún más especial.</p>
+      <p class="section-subtitle reveal">Busca tu apellido familiar para confirmar.</p>
       <div class="gold-divider reveal"></div>
 
-      <div class="form-container reveal-scale">
-        <form id="rsvp-form">
-          <div class="form-group">
-            <label for="name">Nombre completo</label>
-            <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
-          </div>
-
-          <div class="form-group">
-            <label for="message">Mensaje opcional</label>
-            <textarea id="message" name="message" placeholder="Déjanos un mensaje especial..."></textarea>
-          </div>
-          <div class="form-submit">
-            <button type="submit" class="btn-gold">Confirmar Asistencia</button>
-          </div>
-        </form>
-
-        <div class="form-success" id="form-success">
-          <span class="success-icon">&#10024;</span>
-          <h3>¡Gracias!</h3>
-          <p>Gracias por confirmar tu asistencia. Nos vemos en nuestro gran día.</p>
+      <div class="rsvp-search-container reveal-scale">
+        <div class="search-wrapper">
+          <span class="search-icon">&#128269;</span>
+          <input type="text" id="search-family" placeholder="Busca tu apellido familiar..." autocomplete="off">
         </div>
+
+        <div id="search-results" class="search-results"></div>
+
+        <div id="rsvp-empty" class="rsvp-empty">
+          <span class="empty-icon">&#128141;</span>
+          <p>Escribe tu apellido o nombre para buscar</p>
+        </div>
+
+        <div id="no-results" class="no-results hidden">No encontramos familias con ese nombre. Intenta con otro apellido.</div>
       </div>
     </div>
   </section>
@@ -1356,8 +1580,10 @@
     // ═══════════════════════════════════════════════════
     // INTERSECTION OBSERVER - Scroll Animations
     // ═══════════════════════════════════════════════════
+    var scrollObserver;
+
     (function initScrollAnimations() {
-      const observer = new IntersectionObserver(
+      scrollObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -1372,7 +1598,7 @@
       );
 
       document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach((el) => {
-        observer.observe(el);
+        scrollObserver.observe(el);
       });
     })();
 
@@ -1424,31 +1650,214 @@
     })();
 
     // ═══════════════════════════════════════════════════
-    // RSVP FORM HANDLER
+    // RSVP — BUSCADOR DE INVITADOS
     // ═══════════════════════════════════════════════════
-    (function initForm() {
-      const form = document.getElementById('rsvp-form');
-      const success = document.getElementById('form-success');
+    (function initRSVP() {
+      const INVITADOS = [
+        { id:'solano', title:'Familia Solano', tickets:6, members:['Hugo','Francis','Richard','Franco','Annette','Paula Roblez'] },
+        { id:'reyes', title:'Familia Reyes', tickets:3, members:['Didel','Marina','Yadira'] },
+        { id:'urbina', title:'Familia Urbina', tickets:1, members:['Pilar'] },
+        { id:'lopez', title:'Familia López', tickets:2, members:['Sonia','Aide'] },
+        { id:'gonzalez', title:'Matrimonio González', tickets:2, members:['Dámaso','Adela'] },
+        { id:'almanza', title:'Matrimonio Almanza', tickets:2, members:['René','Esperanza'] },
+        { id:'cooper', title:'Familia Cooper', tickets:3, members:['Joel','Johana','Kenya'] },
+        { id:'crespo', title:'Matrimonio Crespo', tickets:2, members:['Eddy','Verónica'] },
+        { id:'barrera', title:'Matrimonio Barrera', tickets:2, members:['Yeltson','Jael'] },
+        { id:'lara', title:'Matrimonio Lara', tickets:2, members:['Roger','Francela'] },
+        { id:'tenorio', title:'Matrimonio Tenorio', tickets:2, members:['Oliver','Francis'] },
+        { id:'montesreyes', title:'Familia Montes Reyes', tickets:4, members:['Eliza','Yeison','Yurielis','Liam'] },
+        { id:'montes1', title:'Matrimonio Montes \u2013 Guillermo', tickets:2, members:['Guillermo','Marisol'] },
+        { id:'navarrete1', title:'Familia Navarrete \u2013 Melida', tickets:5, members:['Melida','Jonathan','Cesarito','Allison','Elvis'] },
+        { id:'montes2', title:'Matrimonio Montes \u2013 Jes\u00e9', tickets:2, members:['Jes\u00e9','Meyling'] },
+        { id:'navarrete2', title:'Familia Navarrete \u2013 Sara', tickets:4, members:['Sara','Bayardo','Melisa','Sof\u00eda'] },
+        { id:'navarrete3', title:'Matrimonio Navarrete \u2013 Luis', tickets:2, members:['Luis Ram\u00f3n','Raquel'] },
+        { id:'uertecho', title:'Matrimonio Urtecho', tickets:2, members:['Isidro','Ana'] },
+        { id:'alvarado', title:'Matrimonio Alvarado', tickets:2, members:['Marvin','Margarita'] },
+        { id:'martinez', title:'Matrimonio Mart\u00ednez', tickets:2, members:['Errol','Jenny'] },
+        { id:'beteta1', title:'Matrimonio Beteta \u2013 Joel', tickets:2, members:['Joel','Ibania'] },
+        { id:'beteta2', title:'Matrimonio Beteta \u2013 Juan', tickets:2, members:['Juan','Rut'] },
+        { id:'hernandez', title:'Matrimonio Hern\u00e1ndez', tickets:2, members:['Octavio','Joseling'] },
+        { id:'viscay', title:'Familia Viscay', tickets:2, members:['Ada Francis','Santos Arminda'] },
+        { id:'madriz', title:'Familia Madriz', tickets:2, members:['Paola','Pamela'] },
+        { id:'garcia', title:'Familia Garc\u00eda', tickets:2, members:['Rosa','In\u00e9s'] }
+      ];
 
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
+      const input = document.getElementById('search-family');
+      const results = document.getElementById('search-results');
+      const empty = document.getElementById('rsvp-empty');
+      const noResults = document.getElementById('no-results');
 
-        const name = document.getElementById('name').value.trim();
-        const message = document.getElementById('message').value.trim();
+      function normalize(str) {
+        return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      }
 
-        let text = `¡Felicidades Paulina & Yalfred! 🎉👰🤵💍\n\n`;
-        text += `${name} confirma su asistencia a su gran día. 💐✨`;
+      function getConfirmed(id) {
+        return localStorage.getItem('rsvp_confirmed_' + id) === 'true';
+      }
 
-        if (message) {
-          text += `\n\nMensaje: ${message}`;
+      function setConfirmed(id) {
+        localStorage.setItem('rsvp_confirmed_' + id, 'true');
+      }
+
+      function renderCards(query) {
+        results.innerHTML = '';
+        const q = normalize(query);
+
+        if (q.length === 0) {
+          empty.classList.remove('hidden');
+          noResults.classList.add('hidden');
+          return;
         }
 
-        const encoded = encodeURIComponent(text);
-        window.open(`https://wa.me/50589091050?text=${encoded}`, '_blank');
+        const matched = INVITADOS.filter(function(g) {
+          if (normalize(g.title).indexOf(q) !== -1) return true;
+          for (var i = 0; i < g.members.length; i++) {
+            if (normalize(g.members[i]).indexOf(q) !== -1) return true;
+          }
+          return false;
+        });
 
-        form.style.display = 'none';
-        success.classList.add('show');
+        if (matched.length === 0) {
+          empty.classList.add('hidden');
+          noResults.classList.remove('hidden');
+          return;
+        }
+
+        empty.classList.add('hidden');
+        noResults.classList.add('hidden');
+
+        for (var i = 0; i < matched.length; i++) {
+          var g = matched[i];
+          var confirmed = getConfirmed(g.id);
+          var card = document.createElement('div');
+          card.className = 'family-card' + (confirmed ? ' confirmed' : '');
+          card.style.animationDelay = (i * 0.06) + 's';
+
+          var checkboxes = [];
+
+          var header = document.createElement('div');
+          header.className = 'family-card-header';
+
+          var title = document.createElement('div');
+          title.className = 'family-card-title';
+          var titleSpan = document.createElement('span');
+          titleSpan.textContent = g.title;
+          title.appendChild(titleSpan);
+          header.appendChild(title);
+
+          var tickets = document.createElement('span');
+          tickets.className = 'family-card-tickets';
+          tickets.innerHTML = '<span class="ticket-icon">&#127915;</span> ' + g.tickets;
+          header.appendChild(tickets);
+
+          card.appendChild(header);
+
+          var list = document.createElement('div');
+          list.className = 'family-card-members';
+
+          for (var j = 0; j < g.members.length; j++) {
+            var m = g.members[j];
+            var label = document.createElement('label');
+            label.className = 'member-item';
+
+            var cb = document.createElement('input');
+            cb.type = 'checkbox';
+            cb.checked = confirmed;
+            cb.disabled = confirmed;
+
+            var span = document.createElement('span');
+            span.className = 'member-check';
+
+            var name = document.createElement('span');
+            name.className = 'member-name';
+            name.textContent = m;
+
+            if (!confirmed && q.length > 1 && normalize(m).indexOf(q) !== -1) {
+              label.classList.add('member-highlight');
+            }
+
+            label.appendChild(cb);
+            label.appendChild(span);
+            label.appendChild(name);
+            list.appendChild(label);
+            checkboxes.push(cb);
+          }
+
+          card.appendChild(list);
+
+          var actions = document.createElement('div');
+          actions.className = 'family-card-actions';
+
+          var btn = document.createElement('button');
+          btn.className = 'btn-gold';
+          btn.textContent = confirmed ? '\u2714 Confirmado' : 'Confirmar Asistencia';
+          btn.disabled = confirmed;
+
+          if (!confirmed) {
+            (function(group, boxes, btnEl, cardEl) {
+              function updateBtn() {
+                var any = false;
+                for (var k = 0; k < boxes.length; k++) {
+                  if (boxes[k].checked) { any = true; break; }
+                }
+                btnEl.disabled = !any;
+              }
+
+              for (var k = 0; k < boxes.length; k++) {
+                (function(cb) {
+                  cb.addEventListener('change', updateBtn);
+                })(boxes[k]);
+              }
+
+              btn.addEventListener('click', function() {
+                var selected = [];
+                for (var k = 0; k < boxes.length; k++) {
+                  if (boxes[k].checked) {
+                    selected.push(group.members[k]);
+                  }
+                }
+                if (selected.length === 0) return;
+
+                var text = '\uD83C\uDF89\uD83D\uDC70\uD83E\uDD13\uD83D\uDC8D \u00a1Felicidades Paulina & Yalfred!\n\n';
+                text += group.title + ' confirma asistencia:\n';
+                for (var k = 0; k < selected.length; k++) {
+                  text += '\u2714 ' + selected[k] + '\n';
+                }
+                text += '\n\u00a1Nos vemos el 27 de Septiembre! \uD83D\uDC90\u2728';
+
+                var encoded = encodeURIComponent(text);
+                window.open('https://wa.me/50589091050?text=' + encoded, '_blank');
+
+                setConfirmed(group.id);
+                cardEl.classList.add('confirmed');
+                btnEl.textContent = '\u2714 Confirmado';
+                btnEl.disabled = true;
+                for (var k = 0; k < boxes.length; k++) {
+                  boxes[k].disabled = true;
+                }
+              });
+            })(g, checkboxes, btn, card);
+
+            updateBtn(); // initial state
+          }
+
+          actions.appendChild(btn);
+          card.appendChild(actions);
+          results.appendChild(card);
+        }
+
+        if (scrollObserver) {
+          results.querySelectorAll('.family-card').forEach(function(el) {
+            scrollObserver.observe(el);
+          });
+        }
+      }
+
+      input.addEventListener('input', function() {
+        renderCards(input.value);
       });
+
+      renderCards('');
     })();
 
     // ═══════════════════════════════════════════════════
